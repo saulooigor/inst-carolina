@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Cirurgias - Carolina Instrumentação</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center">
+            <img src="../assets/images/logo_ci.png" alt="logo" class="img-fluid align-text-center text-center my-3" style="max-width: 200px;">
+            <h1 class="align-text-center text-center text-white">Apropriação de Cirurgias</h1>
+        </div>
+        <form method="post">
+            <div class="form-group">
+                <label for="date">Data:</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <div class="form-group">
+                <label for="patient">Paciente:</label>
+                <input type="text" class="form-control" id="patient" name="patient">
+            </div>
+            <div class="form-group">
+                <label for="doctor">Médico:</label>
+                <select class="form-control" id="doctor" name="doctor">
+                    <option value="doctor1">Doctor 1</option>
+                    <option value="doctor2">Doctor 2</option>
+                    <option value="doctor3">Doctor 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Valor:</label>
+                <input type="text" class="form-control" id="price" name="price" maxlength="10">
+            </div>
+            <button type="submit" class="btn btn-lg my-4">Cadastrar Cirurgia</button>
+        </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#price').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+    });
+</script>
+</body>
+</html>

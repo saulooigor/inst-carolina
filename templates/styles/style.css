@@ -1,0 +1,33 @@
+body {
+    background: radial-gradient(circle 1300px at center left, white 85%, #7cd4f798 85%, #7cd4f798 88%, #4ba8e28e 88% );
+    font-family: "Bitter", sans-serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+input, select {
+    border: 3px solid #3168BB !important; /* Define a espessura e a cor da borda */
+    border-radius: 25px !important; /* Arredonda os cantos da borda */
+    height: 50px !important; /* Define a altura do input */
+    background-color: transparent !important; /* Define a cor de fundo do input */
+}
+
+.btn{
+    border: 3px solid #3168BB !important;
+    background-color: transparent !important;
+    font-weight: bolder !important;
+    color: #3168BB;
+    border-radius: 25px !important;
+}
+
+.btn:hover{
+    background-color: #3168BB !important;
+    color: white;
+}
+
+h1{
+    background-color: #3168BB !important;
+    padding: 10px;
+    box-shadow: 0px 10px 1px rgba(221, 221, 221, 1), 0 10px 20px rgba(204, 204, 204, 1);
+    text-shadow: 2px 2px black;
+}
