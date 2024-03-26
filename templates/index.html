@@ -10,15 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <div class="d-flex align-items-center justify-content-center">
-            <img src="../assets/images/logo_ci.png" alt="logo" class="img-fluid align-text-center text-center my-3" style="max-width: 200px;">
+            <img src="{{ url_for('static', filename='images/logo_ci.png') }}" alt="logo" class="img-fluid align-text-center text-center my-3" style="max-width: 200px;">
             <h1 class="align-text-center text-center text-white">Apropriação de Cirurgias</h1>
         </div>
         <form method="post">
+            {% if inserted_doc is defined %}
+                <div class="card mb-4 collapse show" id="collapseCard">
+                    <div class="card-body">
+                        <button type="button" class="close" data-toggle="collapse" data-target="#collapseCard" aria-expanded="false" aria-controls="collapseCard">
+                            <span style="color:white" aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="card-title">Registro inserido com sucesso!</h5>
+                        <p>Paciente:{{ inserted_doc.patient }}<br>
+                           Médico: {{ inserted_doc.doctor }} <br>
+                           Data: {{ inserted_doc.date }}<br>
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+
             <div class="form-group">
                 <label for="date">Data:</label>
                 <input type="date" class="form-control" id="date" name="date">
@@ -40,14 +55,25 @@
                 <input type="text" class="form-control" id="price" name="price" maxlength="10">
             </div>
             <button type="submit" class="btn btn-lg my-4">Cadastrar Cirurgia</button>
+            <div id="spinner" style="display: none; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </form>
     </div>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#price').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+        $('#price').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
     });
+    
+    $('form').submit(function(){
+        $('#spinner').css('display', 'flex');
+    });
+
 </script>
 </body>
 </html>

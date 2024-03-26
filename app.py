@@ -14,21 +14,26 @@ def index():
     if request.method == 'POST':
        
         # Create a document in the "apropriacao" collection with properties based on the form fields
-        db.collection("apropriacao").document().set({
+        doc_ref = db.collection("apropriacao").document()
+        doc_ref.set({
             "patient": field_value('patient'),
             "date": field_value('date'),
             "doctor": field_value('doctor'),
             "price": field_value('price')
         })
         
-        return 'Success'
+        # Retrieve the inserted document
+        inserted_doc = doc_ref.get().to_dict()
+        
+        return render_template('index.html', inserted_doc=inserted_doc)
+    
     return render_template('index.html')
 
 @app.route('/report')
 def report():
     aprops = db.collection("apropriacao").get()
     return render_template('report.html', aprops=aprops)
-
+ 
 if __name__ == '__main__':
     app.run(debug=True)
     

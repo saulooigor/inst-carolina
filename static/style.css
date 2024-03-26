@@ -31,3 +31,17 @@ h1{
     box-shadow: 0px 10px 1px rgba(221, 221, 221, 1), 0 10px 20px rgba(204, 204, 204, 1);
     text-shadow: 2px 2px black;
 }
+
+.card{
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4), 0px 7px 13px -3px rgba(0, 0, 0, 0.3), inset 0px -3px 0px rgba(0, 0, 0, 0.2);
+
+    p{
+        font-weight: 500 !important;
+    }
+
+    h5{
+        font-weight: bolder !important;
+    }
+}
